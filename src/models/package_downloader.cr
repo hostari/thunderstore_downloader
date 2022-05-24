@@ -4,7 +4,10 @@ class PackageDownloader
 
   # downloads a folder and zips it upon storage
   def download
-    `wget -O #{zipped_package} #{@download_url}`
+    package_input = "#{zipped_package} #{@download_url}"
+    process = Process.new("wget -O", [package_input], output: Process::Redirect::Pipe)
+    process.output.gets_to_end
+
     `unzip #{zipped_package} -d #{package_name}`
   end
 

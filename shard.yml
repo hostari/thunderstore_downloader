@@ -1,0 +1,9 @@
+name: thunderstore_downloader
+version: 0.1.0
+
+authors:
+  - Pauline De Polonia <paudepolonia000@yahoo.com>
+
+crystal: 1.4.1
+
+license: MIT

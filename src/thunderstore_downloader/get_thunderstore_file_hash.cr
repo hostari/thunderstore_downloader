@@ -18,10 +18,8 @@ module ThunderstoreDownloader
       download_process = Process.new(`wget -O #{name}-#{version_number}.zip #{download_url}`, output: Process::Redirect::Pipe)
       download_package = download_process.output.gets_to_end
 
-      if download_package
-        unzip_process = Process.new(`unzip #{name}-#{version_number}.zip -d #{name}-#{version_number}`, output: Process::Redirect::Pipe)
-        unzipped_folder = unzip_process.output.gets_to_end
-      end
+      unzip_process = Process.new(`unzip #{name}-#{version_number}.zip -d #{name}-#{version_number}`, output: Process::Redirect::Pipe)
+      unzipped_folder = unzip_process.output.gets_to_end
 
       client = ThunderstoreDownloader::Client.new(host)
       response = client.post("/api/v1/thunderstore_file_hash", unzipped_folder)

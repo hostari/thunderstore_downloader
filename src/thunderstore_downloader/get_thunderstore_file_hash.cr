@@ -5,14 +5,10 @@ module ThunderstoreDownloader
     def self.get_thunderstore_file_hash(host : String, download_url : String, name : String, version_number : String, download_path : String)
       package_name = `#{name}-#{version_number}`
       zipped_package = `#{package_name}.zip`
-      download_package = `wget -O #{package_name} #{download_url}`
 
-      # package_name = `#{name}-#{version_number}`
-      # zipped_package = `#{package_name}.zip`
-
-      # download_input = `#{package_name} #{download_url}`
-      # process = Process.new("wget -O", [download_input], output: Process::Redirect::Pipe)
-      # download_package = process.output.gets_to_end
+      download_input = `-O #{package_name} #{download_url}`
+      process = Process.new("wget", [download_input], output: Process::Redirect::Pipe)
+      download_package = process.output.gets_to_end
 
       # performs unzipping
       # unzip_input = "#{zipped_package} -d #{package_name}"

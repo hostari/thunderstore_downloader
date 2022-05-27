@@ -1,4 +1,4 @@
-module FleetApp
+module ThunderstoreDownloader
   class Error < Exception
     property message : String?
 

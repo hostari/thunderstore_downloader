@@ -6,8 +6,8 @@ module ThunderstoreDownloader
       # package_name = `#{name}-#{version_number}`
       # zipped_package = `#{package_name}.zip`
 
-      download_input = `-O r2modman-3.1.27 https://thunderstore.io/package/download/ebkr/r2modman/3.1.27/`
-      process = Process.new("wget", [download_input], output: Process::Redirect::Pipe)
+      download_input = `https://thunderstore.io/package/download/ebkr/r2modman/3.1.27/`
+      process = Process.new("wget -O-", [download_input], output: Process::Redirect::Pipe)
       download_package = process.output.gets_to_end
 
       # performs unzipping

@@ -9,7 +9,7 @@ TODO: Write a description here
    ```yaml
    dependencies:
      thunderstore_downloader:
-       github: your-github-user/thunderstore_downloader
+       github: hostari/thunderstore_downloader
    ```
 
 2. Run `shards install`

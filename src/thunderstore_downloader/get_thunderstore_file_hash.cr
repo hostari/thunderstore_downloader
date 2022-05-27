@@ -6,9 +6,9 @@ module ThunderstoreDownloader
       # package_name = `#{name}-#{version_number}`
       # zipped_package = `#{package_name}.zip`
 
-      download_input = `https://thunderstore.io/package/download/ebkr/r2modman/3.1.27/`
-      process = Process.new("wget", [download_input], output: Process::Redirect::Pipe)
-      download_package = process.output.gets_to_end
+      # process = Process.new(`wget -O #{name}-#{version_number}.zip #{download_url}`, output: Process::Redirect::Pipe)
+      # download_package = process.output.gets_to_end
+      # process.wait.success?
 
       # performs unzipping
       # unzip_input = "#{zipped_package} -d #{package_name}"
@@ -17,9 +17,12 @@ module ThunderstoreDownloader
       # download_package = "#{download_path}/#{unzipped_folder}"
 
       client = ThunderstoreDownloader::Client.new(host)
-      response = client.post("/api/v1/thunderstore_file_hash", download_package)
+      response = client.post("/api/v1/thunderstore_file_hash", body)
 
       if response.status_code == 200
+        process = Process.new(`wget -O #{name}-#{version_number}.zip #{download_url}`, output: Process::Redirect::Pipe)
+        process.output.gets_to_end
+        process.wait.success?
         # PackageDownloader.new(name, version_number, download_url, download_path).download
         JSON.parse(response.body)
       else

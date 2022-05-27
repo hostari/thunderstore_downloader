@@ -15,12 +15,15 @@ module ThunderstoreDownloader
       # process = Process.new("unzip", [unzip_input], output: Process::Redirect::Pipe)
       # unzipped_folder = process.output.gets_to_end
       # download_package = "#{download_path}/#{unzipped_folder}"
-      process = Process.new(`wget -O #{name}-#{version_number}.zip #{download_url}`, output: Process::Redirect::Pipe)
+      download_process = Process.new(`wget -O #{name}-#{version_number}.zip #{download_url}`, output: Process::Redirect::Pipe)
       package = process.output.gets_to_end
-      process.wait.success?
+
+      if download_process.wait.success?
+        unzip_process = Process.new(`unzip #{name}-#{version_number}.zip -d #{name}-#{version_number}`, output: Process::Redirect::Pipe)
+      end
 
       client = ThunderstoreDownloader::Client.new(host)
-      response = client.post("/api/v1/thunderstore_file_hash", package)
+      response = client.post("/api/v1/thunderstore_file_hash", unzip_process)
 
       if response.status_code == 200
         # PackageDownloader.new(name, version_number, download_url, download_path).download

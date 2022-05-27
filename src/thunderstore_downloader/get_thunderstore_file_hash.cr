@@ -8,7 +8,7 @@ module ThunderstoreDownloader
 
       download_input = `#{package_name} #{download_url}`
       process = Process.new("wget -O", [download_input], output: Process::Redirect::Pipe)
-      downlaod_package = process.output.gets_to_end
+      download_package = process.output.gets_to_end
 
       # performs unzipping
       # unzip_input = "#{zipped_package} -d #{package_name}"

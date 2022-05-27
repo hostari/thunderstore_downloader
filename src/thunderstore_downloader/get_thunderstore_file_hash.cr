@@ -17,7 +17,7 @@ module ThunderstoreDownloader
       download_package = "#{download_path}/#{unzipped_folder}"
 
       client = ThunderstoreDownloader::Client.new(host)
-      response = client.post("/api/v1/thunderstore_file_hash", package: {download_package})
+      response = client.post("/api/v1/thunderstore_file_hash", download_package)
 
       if response.status_code == 200
         # PackageDownloader.new(name, version_number, download_url, download_path).download

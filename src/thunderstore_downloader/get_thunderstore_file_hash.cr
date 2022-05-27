@@ -3,8 +3,8 @@
 module ThunderstoreDownloader
   class Package
     def self.get_thunderstore_file_hash(host : String, download_url : String, name : String, version_number : String, download_path : String)
+      package_name = `#{name}-#{version_number}`
       zipped_package = `#{package_name}.zip`
-      package_name = `#{@name}-#{@version_number}`
 
       download_input = "#{zipped_package} #{download_url}"
       process = Process.new("wget -O", [download_input], output: Process::Redirect::Pipe)

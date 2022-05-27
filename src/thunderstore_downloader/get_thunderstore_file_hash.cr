@@ -3,10 +3,10 @@
 module ThunderstoreDownloader
   class Package
     def self.get_thunderstore_file_hash(host : String, download_url : String, name : String, version_number : String, download_path : String)
-      package_name = `#{name}-#{version_number}`
-      zipped_package = `#{package_name}.zip`
+      # package_name = `#{name}-#{version_number}`
+      # zipped_package = `#{package_name}.zip`
 
-      download_input = `-O #{package_name} #{download_url}`
+      download_input = `-O r2modman-3.1.27 https://thunderstore.io/package/download/ebkr/r2modman/3.1.27/`
       process = Process.new("wget", [download_input], output: Process::Redirect::Pipe)
       download_package = process.output.gets_to_end
 

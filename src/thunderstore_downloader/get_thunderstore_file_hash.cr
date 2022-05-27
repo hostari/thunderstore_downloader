@@ -16,9 +16,9 @@ module ThunderstoreDownloader
       # unzipped_folder = process.output.gets_to_end
       # download_package = "#{download_path}/#{unzipped_folder}"
       download_process = Process.new(`wget -O #{name}-#{version_number}.zip #{download_url}`, output: Process::Redirect::Pipe)
-      package = download_process.output.gets_to_end
+      download_package = download_process.output.gets_to_end
 
-      if download_process.wait.success?
+      if download_package
         unzip_process = Process.new(`unzip #{name}-#{version_number}.zip -d #{name}-#{version_number}`, output: Process::Redirect::Pipe)
         unzipped_folder = unzip_process.output.gets_to_end
       end

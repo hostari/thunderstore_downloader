@@ -1,6 +1,8 @@
 # File Hash returns an object containing the file name(path) and its SHA256 hash.
 
 class FileHash
+  include ThunderstoreDownloader::Package
+
   def initialize(@path : String)
   end
 

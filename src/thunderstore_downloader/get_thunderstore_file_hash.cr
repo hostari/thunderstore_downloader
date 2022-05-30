@@ -3,24 +3,6 @@
 module ThunderstoreDownloader
   class Package
     def self.get_thunderstore_file_hash(host : String, download_url : String, name : String, version_number : String, download_path : String)
-      # package_name = `#{name}-#{version_number}`
-      # zipped_package = `#{package_name}.zip`
-
-      # process = Process.new(`wget -O #{name}-#{version_number}.zip #{download_url}`, output: Process::Redirect::Pipe)
-      # download_package = process.output.gets_to_end
-      # process.wait.success?
-
-      # performs unzipping
-      # unzip_input = "#{zipped_package} -d #{package_name}"
-      # process = Process.new("unzip", [unzip_input], output: Process::Redirect::Pipe)
-      # unzipped_folder = process.output.gets_to_end
-      # download_package = "#{download_path}/#{unzipped_folder}"
-      # download_process = Process.new(`wget -O #{name}-#{version_number}.zip #{download_url}`, output: Process::Redirect::Pipe)
-      # download_package = download_process.output.gets_to_end
-
-      # unzip_process = Process.new(`unzip #{name}-#{version_number}.zip -d #{name}-#{version_number}`, output: Process::Redirect::Pipe)
-      # unzip_folder = unzip_process.output.gets_to_end
-
       download_and_unzip_package = ThunderstoreDownloader::Package.new(name, version_number, download_url).download_and_unzip
 
       client = ThunderstoreDownloader::Client.new(host)

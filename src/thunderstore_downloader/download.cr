@@ -8,12 +8,13 @@ module ThunderstoreDownloader
     end
 
     def download_and_unzip
-      download.wait
-      unzip if download.wait.success? == true
+      download
+      unzip if download
     end
 
     def download
       download_process = Process.new(`wget -O #{@name}-#{@version_number}.zip #{@download_url}`, output: Process::Redirect::Pipe)
+      pp download_process.output.gets_to_end
       download_process.output.gets_to_end
     end
 

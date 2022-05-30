@@ -9,7 +9,7 @@ module ThunderstoreDownloader
 
     def download_and_unzip
       download
-      unzip if download
+      unzip
     end
 
     def download
@@ -19,8 +19,7 @@ module ThunderstoreDownloader
     end
 
     def unzip
-      # unzip_process = Process.new(`unzip #{@name}-#{@version_number}.zip -d #{@name}-#{@version_number}`, output: Process::Redirect::Pipe)
-      unzip_process = Process.new(`unzip #{download} -d #{@name}-#{@version_number}`, output: Process::Redirect::Pipe)
+      unzip_process = Process.new(`unzip #{@name}-#{@version_number}.zip -d #{@name}-#{@version_number}`, output: Process::Redirect::Pipe)
 
       unzip_process.output.gets_to_end
     end

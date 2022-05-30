@@ -7,40 +7,18 @@ module ThunderstoreDownloader
     def initialize(@name, @version_number, @download_url)
     end
 
+    def download_and_unzip
+      download && unzip
+    end
+
     def download
       download_process = Process.new(`wget -O #{@name}-#{@version_number}.zip #{@download_url}`, output: Process::Redirect::Pipe)
       download_package = download_process.output.gets_to_end
     end
+
+    def unzip
+      unzip_process = Process.new(`unzip #{@name}-#{@version_number}.zip -d #{@name}-#{@version_number}`, output: Process::Redirect::Pipe)
+      unzip_folder = unzip_process.output.gets_to_end
+    end
   end
 end
-
-# class PackageDownloader
-#   def initialize(name : String, version_number : String, download_url : String, download_path : String)
-#   end
-
-#   # downloads a folder and zips it upon storage
-#   def download
-#     # performs the download
-#     download_input = "#{zipped_package} #{download_url}"
-#     process = Process.new("wget -O", [download_input], output: Process::Redirect::Pipe)
-#     process.output.gets_to_end
-
-#     # performs unzipping
-#     unzip_input = "#{zipped_package} -d #{package_name}"
-#     process = Process.new("unzip", [unzip_input], output: Process::Redirect::Pipe)
-#     unzipped_folder = process.output.gets_to_end
-#     "#{download_path}/#{unzipped_folder}"
-#   end
-
-#   # appends the version number to the name of the package. this will be used
-#   # both as a name for the package to be downloaded as a zip file and as the name
-#   # of the package after unzipping
-#   def package_name
-#     `#{@name}-#{@version_number}`
-#   end
-
-#   # compressess/zips a package
-#   def zipped_package
-#     `#{package_name}.zip`
-#   end
-# end

@@ -8,7 +8,8 @@ module ThunderstoreDownloader
     end
 
     def download_and_unzip
-      download && unzip
+      download
+      unzip
     end
 
     def download

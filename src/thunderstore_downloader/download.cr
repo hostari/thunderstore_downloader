@@ -4,11 +4,11 @@ module ThunderstoreDownloader
     property version_number : String
     property download_url : String
 
-    def initialize(name, version_number, download_url)
+    def initialize(@name, @version_number, @download_url)
     end
 
     def download
-      download_process = Process.new(`wget -O #{name}-#{version_number}.zip #{download_url}`, output: Process::Redirect::Pipe)
+      download_process = Process.new(`wget -O #{@name}-#{@version_number}.zip #{@download_url}`, output: Process::Redirect::Pipe)
       download_package = download_process.output.gets_to_end
     end
   end

@@ -20,7 +20,7 @@ class PackageDownloader
   # both as a name for the package to be downloaded as a zip file and as the name
   # of the package after unzipping
   def package_name
-    `#{@name}-#{@version_number}`
+    `#{name}-#{@version_number}`
   end
 
   # compressess/zips a package

@@ -8,8 +8,8 @@ module ThunderstoreDownloader
     end
 
     def download_and_unzip
-      download
-      unzip
+      download.wait
+      unzip if download.wait.success? == true
     end
 
     def download

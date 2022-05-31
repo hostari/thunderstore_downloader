@@ -13,11 +13,11 @@ module ThunderstoreDownloader
     end
 
     def download
-      download_process = Process.new(`wget -O #{@name}-#{@version_number}.zip #{@download_url}`, output: Process::Redirect::Pipe)
+      download_process = Process.new(`wget -O "#{@name}"-"#{@version_number}".zip "#{@download_url}"`, output: Process::Redirect::Pipe)
     end
 
     def unzip
-      unzip_process = Process.new(`unzip #{@name}-#{@version_number}.zip -d #{@name}-#{@version_number}`)
+      #unzip_process = Process.new(`unzip #{@name}-#{@version_number}.zip -d #{@name}-#{@version_number}`)
     end
 
     def get_thunderstore_file_hash(download_path : String)

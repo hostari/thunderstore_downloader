@@ -13,8 +13,8 @@ module ThunderstoreDownloader
     end
 
     def download
-      user_input = `wget -O "${@name}-${@version_number}.zip" "${@download_url}"`
-      download_process = Process.new(`echo`, [user_input], output: Process::Redirect::Pipe)
+      user_input = `wget -O "#{@name}-#{@version_number}.zip" "#{@download_url}"`
+      download_process = Process.new(`echo`, input: [user_input], output: Process::Redirect::Pipe)
       #`wget -O "#{@name}-#{@version_number}.zip" "#{@download_url}"`
     end
 

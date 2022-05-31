@@ -8,9 +8,10 @@ module ThunderstoreDownloader
     def initialize(@name, @version_number, @download_url, @download_path)
     end
 
-    def download_and_unzip
+    def download_unzip_get_hash
       download
       unzip
+      get_thunderstore_file_hash
     end
 
     def download
@@ -21,7 +22,7 @@ module ThunderstoreDownloader
       `unzip "#{@name}-#{@version_number}.zip" -d "#{@name}-#{@version_number}"`
     end
 
-    def get_thunderstore_file_hash(download_path : String)
+    def get_thunderstore_file_hash
       FileHash.new("#{@download_path}/#{@name}-#{@version_number}").get_file_hash
     end
   end

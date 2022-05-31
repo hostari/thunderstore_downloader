@@ -23,7 +23,7 @@ module ThunderstoreDownloader
     end
 
     def get_thunderstore_file_hash
-      FileHash.new("#{@download_path}/#{@name}-#{@version_number}").get_file_hash
+      FileHash.new("#{@download_path}#{@name}-#{@version_number}").get_file_hash
     end
   end
 end

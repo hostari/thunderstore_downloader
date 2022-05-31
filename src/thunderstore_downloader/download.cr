@@ -4,7 +4,7 @@ module ThunderstoreDownloader
     property version_number : String
     property download_url : String
 
-    def initialize(@name, @version_number, @download_url)
+    def initialize(@name, @version_number, @download_url, @download_path)
     end
 
     def download_and_unzip
@@ -13,17 +13,15 @@ module ThunderstoreDownloader
     end
 
     def download
-      user_input = `wget -O "#{@name}-#{@version_number}.zip" "#{@download_url}"`
-      download_process = Process.new(`echo`, input: [user_input], output: Process::Redirect::Pipe)
-      #`wget -O "#{@name}-#{@version_number}.zip" "#{@download_url}"`
+      `wget -O "#{@name}-#{@version_number}.zip" "#{@download_url}"`
     end
 
     def unzip
-      #unzip_process = Process.new(`unzip #{@name}-#{@version_number}.zip -d #{@name}-#{@version_number}`)
+      `unzip "#{@name}-#{@version_number}.zip" -d "#{@name}-#{@version_number}"`
     end
 
     def get_thunderstore_file_hash(download_path : String)
-      FileHash.new(download_path).get_file_hash
+      FileHash.new("#{@download_path}/#{@name}-#{@version_number}").get_file_hash
     end
   end
 end

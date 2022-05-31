@@ -3,6 +3,7 @@ module ThunderstoreDownloader
     property name : String
     property version_number : String
     property download_url : String
+    property download_path : String
 
     def initialize(@name, @version_number, @download_url, @download_path)
     end

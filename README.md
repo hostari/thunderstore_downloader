@@ -1,6 +1,6 @@
 # thunderstore_downloader
 
-TODO: Write a description here
+A crystal wrapper to download and unzip thunderstore package versions and walk through each files within the folder to get their SHA256 hashes.
 
 ## Installation
 

@@ -9,7 +9,7 @@ module ThunderstorePackageDownloader
     end
 
     def get_thunderstore_file_hash
-      `wget -O "#{@name}-#{@version_number}.zip" "#{@download_url}"`
+      `wget -O "#{@download_path}#{@name}-#{@version_number}.zip" "#{@download_url}"`
       `unzip "#{@name}-#{@version_number}.zip" -d "#{@name}-#{@version_number}"`
       FileHash.new("#{@download_path}#{@name}-#{@version_number}").get_file_hash
     end

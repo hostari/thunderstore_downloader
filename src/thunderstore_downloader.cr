@@ -1,7 +1,7 @@
 require "json"
 require "http/client"
 
-module ThunderstoreDownloader
+module ThunderstorePackageDownloader
   VERSION = "0.1.0"
 end
 

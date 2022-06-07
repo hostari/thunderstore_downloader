@@ -1,6 +1,6 @@
 # PathBuilder "walks" the directory top-down to build the path name of nested files
 
-module ThunderstoreDownloader
+module ThunderstorePackageDownloader
   class PathBuilder
     def initialize
     end

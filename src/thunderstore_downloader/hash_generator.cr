@@ -1,5 +1,5 @@
 # HashGenerator returns a string the file's SHA256 hash.
-module ThunderstoreDownloader
+module ThunderstorePackageDownloader
   class HashGenerator
     def initialize
     end

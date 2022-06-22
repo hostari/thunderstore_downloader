@@ -15,16 +15,12 @@ module ThunderstorePackageDownloader
     # path_builder.walk(/home/servers) { |folder| puts folder }
     # => "/home/servers/blah"
     def walk(path = @root, &block : String, Array(String), Array(String) ->)
-      directory = Dir.new(path) if path.is_a?(String) # returns a new directory object for the named directory
-      pp "First line#{directory.not_nil!.closed?}"
+      directory = Dir.new(path) if path.is_a?(String)                                                                                          # returns a new directory object for the named directory
       directory_children, files = directory.not_nil!.children.partition { |content| Dir.exists?(File.join(directory.not_nil!.path, content)) } # returns two arrays, one containing the files and the other containing directories; and builds the complete path for each directory
-      "Second line#{directory.not_nil!.closed?}"
       block.call(directory.not_nil!.path, directory_children, files)
-      "Third line#{directory.not_nil!.closed?}"
       directory_children.each do |directory_child_name|
-        walk = walk File.join(directory.not_nil!.path, directory_child_name), &block # builds the path name from the root directory to name of the file
-        "Third line#{directory.not_nil!.closed?}"
-        walk
+        walk File.join(directory.not_nil!.path, directory_child_name), &block # builds the path name from the root directory to name of the file
+        directory.not_nil!.close
       end
     end
   end

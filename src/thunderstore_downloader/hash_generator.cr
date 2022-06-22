@@ -10,7 +10,6 @@ module ThunderstorePackageDownloader
       content = file.gets_to_end
       sha256 = OpenSSL::HMAC.hexdigest(OpenSSL::Algorithm::SHA256, "hostari", content)
       file.close
-      pp file.closed?
       sha256
     end
   end

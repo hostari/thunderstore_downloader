@@ -6,9 +6,10 @@ module ThunderstorePackageDownloader
 
     # returns the SHA256 hash of a given file (file path).
     def generate_hash(path : String)
-      content = File.read(path)
+      file = File.new(path)
+      content = file.gets_to_end
       sha256 = OpenSSL::HMAC.hexdigest(OpenSSL::Algorithm::SHA256, "hostari", content)
-      content.close
+      file.close
       sha256
     end
   end

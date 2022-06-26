@@ -20,6 +20,7 @@ module ThunderstorePackageDownloader
       block.call(directory.not_nil!.path, directory_children, files)
       directory_children.each do |directory_child_name|
         walk File.join(directory.not_nil!.path, directory_child_name), &block # builds the path name from the root directory to name of the file
+        directory.not_nil!.close
       end
     end
   end

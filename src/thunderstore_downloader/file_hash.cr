@@ -27,10 +27,15 @@ module ThunderstorePackageDownloader
       file_paths = [] of String
       server_folders.each do |folder|
         # gets the both files and folders within a folder
-        entries = Dir.entries(folder)
-        entries.each do |entry|
-          entry
+        begin
+          entries = Dir.entries(folder.not_nil!)
+        rescue e
+          pp e.message
+          pp "Process stopped at #{folder} and will restart later."
+          exit
+        end
 
+        entries.not_nil!.each do |entry|
           # appends name of the file to complete the folder path
           file_path = "#{folder}/#{entry}"
 

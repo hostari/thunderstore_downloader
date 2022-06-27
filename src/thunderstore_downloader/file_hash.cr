@@ -22,7 +22,13 @@ module ThunderstorePackageDownloader
       server_folders = [] of String
       pathbuilder = PathBuilder.new
 
-      pathbuilder.walk(@path) { |folder| server_folders.push(folder) }
+      begin
+        pathbuilder.walk(@path) { |folder| server_folders.push(folder) }
+      rescue e
+        pp "Process ended at #{@path} and will restart later"
+        pp e
+        exit
+      end
 
       file_paths = [] of String
       server_folders.each do |folder|

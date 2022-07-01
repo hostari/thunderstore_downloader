@@ -27,7 +27,7 @@ module ThunderstorePackageDownloader
       rescue e
         pp "Process ended at #{@path} and will restart later"
         pp e
-        exit
+        nil
       end
 
       file_paths = [] of String

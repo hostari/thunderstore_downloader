@@ -24,8 +24,8 @@ module ThunderstorePackageDownloader
     end
 
     def delete_files
-      `sudo rm -rf #{mod_version_unzipped}`
-      `sudo rm -rf #{mod_version_zipped}`
+      `rm -rf #{mod_version_unzipped}`
+      `rm -rf #{mod_version_zipped}`
     end
 
     def download_command

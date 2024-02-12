@@ -1,6 +1,6 @@
 # thunderstore_downloader
 
-A crystal wrapper to download and unzip thunderstore package versions and walk through each files within the folder to get their SHA256 hashes.
+Downloads and unzips thunderstore package versions and walks through each file within the folder to get its SHA256 hash.
 
 ## Installation
 
@@ -20,12 +20,6 @@ A crystal wrapper to download and unzip thunderstore package versions and walk t
 require "thunderstore_downloader"
 ```
 
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
-
 ## Contributing
 
 1. Fork it (<https://github.com/your-github-user/thunderstore_downloader/fork>)
@@ -36,4 +30,5 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [Pauline De Polonia](https://github.com/your-github-user) - creator and maintainer
+- [Pauline De Polonia](https://github.com/paula4230) - creator
+- [Xavi Ablaza](https://github.com/xaviablaza) - maintainer
